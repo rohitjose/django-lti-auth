@@ -1,0 +1,3 @@
+include LICENSE README.rst AUTHORS.rst
+recursive-include django_lti_auth/templates *.html
+global-exclude *.pyc[co]
