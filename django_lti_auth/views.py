@@ -38,9 +38,16 @@ def auth(request):
             verify_request_common(consumers, url,\
                                   request.method, headers,\
                                   params)
-            import_string(settings.PYLTI_CONFIG['method_hooks']['valid_lti_request'])(params)
+            # Map and call the login method hook if defined in the settings
+            login_method_hook = settings.PYLTI_CONFIG.get('method_hook',{}).get('valid_lti_request',None)
+            if(login_method_hook):
+                import_string(login_method_hook)(params)
             return HttpResponseRedirect(next_url)
         except LTIException:
+            # Map and call the invalid login method hook if defined in the settings
+            invalid_login_method_hook = settings.PYLTI_CONFIG.get('method_hook',{}).get('invalid_lti_request',None)
+            if(invalid_login_method_hook):
+                import_string(invalid_login_method_hook)(params)
             return HttpResponseRedirect(get_reverse('django_lti_auth:denied'))
     else:
         return HttpResponseRedirect(get_reverse('django_lti_auth:denied'))
