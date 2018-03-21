@@ -5,10 +5,10 @@ setup(
 
     version='1.0.0',
 
-    description='Django LTI Authentication Made Easy. Easily integrate with the LTI provider for django projects',
-    long_description='Django LTI Authentication Made Easy. Easily integrate with the LTI provider for django projects',
+    description='Django LTI Authentication Made Easy. Easily integrate with your LTI provider for django projects',
+    long_description='Django LTI Authentication Made Easy. Easily integrate with your LTI provider for django projects',
 
-    url='',
+    url='https://github.com/rohitjose/django-lti-auth.git',
 
     author='Rohit Jose',
     author_email='rohitjose@gmail.com',
