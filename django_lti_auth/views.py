@@ -17,7 +17,7 @@ def get_reverse(objs):
     raise Exception('We got a URL reverse issue: %s.' % str(objs))
 
 def denied(r):
-    return render(r, 'django_lti_auth/denied.html')
+    return render(r, 'denied.html')
 
 @csrf_exempt
 def auth(request):   
