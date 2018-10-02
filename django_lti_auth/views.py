@@ -41,7 +41,9 @@ def auth(request):
             # Map and call the login method hook if defined in the settings
             login_method_hook = settings.PYLTI_CONFIG.get('method_hooks',{}).get('valid_lti_request',None)
             if(login_method_hook):
-                import_string(login_method_hook)(params, request)
+                update_url = import_string(login_method_hook)(params, request)
+                if update_url:
+                    next_url = update_url
             return HttpResponseRedirect(next_url)
         except LTIException:
             # Map and call the invalid login method hook if defined in the settings
