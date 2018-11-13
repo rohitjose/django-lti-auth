@@ -1,11 +1,17 @@
 django_lti_auth
 ===============
 
+.. image:: https://img.shields.io/pypi/pyversions/django_lti_auth.svg
+    :target: https://pypi.python.org/pypi/django_lti_auth
+
 .. image:: https://img.shields.io/pypi/v/django_lti_auth.svg
     :target: https://pypi.python.org/pypi/django_lti_auth
     :alt: Latest PyPI version
 
-Django LTI Authentication Made Easy. Easily integrate with your LTI provider for Django projects. 
+.. image:: https://img.shields.io/pypi/dm/django_lti_auth.svg
+    :target: https://pypi.python.org/pypi/django_lti_auth
+
+This project aims to provide a dead simple way to integrate LTI Authentication into your Django powered app. Try it now, and get rid of the complicated configuration of LTI.
 
 Usage
 -----
@@ -75,6 +81,20 @@ Usage
              'django_lti_auth',
          ]
 
+Explanation
+------------
+* valid_lti_request - The module calls the method you specify here after validating the LTI payload if the payload is valid. The method passes the LTI payload values extracted into a python dictionary as an argument to this method. You can use this payload to bind the user variables to the session. 
+
+        .. code-block:: python
+
+         def valid_lti_request(user_payload, request):
+             ...
+             request.session['userid'] = user_payload['user_id'] 
+             request.session['roles'] =  user_payload['roles']
+             request.session['context_id'] = user_payload['context_id']
+             ...
+         
+* invalid_lti_request: This method is called after validation when the LTI payload is invalid. You can use this method to redirect the user back to the login page (or an access denied page).
 
 Installation
 ------------
@@ -88,6 +108,9 @@ To install the package run the following command:
 
 Requirements
 ^^^^^^^^^^^^
+.. code-block:: python
+ 
+  PyLTI==0.5.1
 
 Licence
 -------
