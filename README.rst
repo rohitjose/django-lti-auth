@@ -94,7 +94,7 @@ Explanation
              request.session['context_id'] = user_payload['context_id']
              ...
 
- You can return a URL value in case you want to redirect the LTI authenticated user to a new URL after the LTI Authentication.
+You can return a URL value in case you want to redirect the LTI authenticated user to a new URL after the LTI Authentication.
 
         .. code-block:: python
 
