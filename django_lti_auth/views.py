@@ -41,6 +41,9 @@ def auth(request):
             # Map and call the login method hook if defined in the settings
             login_method_hook = settings.PYLTI_CONFIG.get('method_hooks',{}).get('valid_lti_request',None)
             if(login_method_hook):
+                # If there is a return URL from the configured call the redirect URL
+                # is updated with the one that is returned. This is to enable redirecting to 
+                # constructed URLs
                 update_url = import_string(login_method_hook)(params, request)
                 if update_url:
                     next_url = update_url
