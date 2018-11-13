@@ -37,7 +37,7 @@ Usage
 
         .. code-block:: python
 
-         # this is main url for the project
+         # this is main urls.py for the project
          from django.conf.urls import url, include
         
          urlpatterns += [
