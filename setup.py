@@ -31,7 +31,7 @@ setup(
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'License :: OSI Approved :: MIT License',
-        'Framework :: Django :: 2.0.3',
+        'Framework :: Django :: 2.0',
         'Framework :: Django :: 2.1',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
