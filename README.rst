@@ -93,6 +93,16 @@ Explanation
              request.session['roles'] =  user_payload['roles']
              request.session['context_id'] = user_payload['context_id']
              ...
+
+ You can return a URL value in case you want to redirect the LTI authenticated user to a new URL after the LTI Authentication.
+
+        .. code-block:: python
+
+         def valid_lti_request(user_payload, request):
+             ...
+             url = reverse('<intented URL string>', kwargs={'context': user_payload['context_id'], 'userid':user_payload['user_id']})
+             return url
+
          
 * invalid_lti_request: This method is called after validation when the LTI payload is invalid. You can use this method to redirect the user back to the login page (or an access denied page).
 
