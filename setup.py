@@ -1,39 +1,42 @@
+import io
+import os
+import re
+
 from setuptools import (setup, find_packages)
 
+def read(filename):
+    filename = os.path.join(os.path.dirname(__file__), filename)
+    text_type = type(u"")
+    with io.open(filename, mode="r", encoding='utf-8') as fd:
+        return re.sub(text_type(r':[a-z]+:`~?(.*?)`'), text_type(r'``\1``'), fd.read())
+
 setup(
-    name='django_lti_auth',
+    name="django_lti_auth",
+    version="1.0.0",
+    url="https://github.com/rohitjose/django-lti-auth.git",
+    license='MIT',
 
-    version='1.0.0',
+    author="Rohit Jose",
+    author_email="rohitjose@gmail.com",
 
-    description='Django LTI Authentication Made Easy. Easily integrate with your LTI provider for django projects',
-    long_description='Django LTI Authentication Made Easy. Easily integrate with your LTI provider for django projects',
+    description="Django LTI Authentication Made Easy. Easily integrate with your LTI provider for django projects",
+    long_description=read("README.rst"),
 
-    url='https://github.com/rohitjose/django-lti-auth.git',
-
-    author='Rohit Jose',
-    author_email='rohitjose@gmail.com',
-
-    license='Apache 2.0',
-
-    classifiers=[
-        #   3 - Alpha
-        #   4 - Beta
-        #   5 - Production/Stable
-        'Development Status :: 3 - Alpha',
-
-        'Intended Audience :: Developers',
-        'Topic :: Software Development :: Libraries :: Python Modules',
-
-        'License :: OSI Approved :: Apache Software License',
-
-        'Framework :: Django :: 2.0.3',
-        'Programming Language :: Python :: 3.6',
-    ],
-
-    keywords='Django SAML2 Authentication Made Easy, integrate with SAML2 SSO such as Okta easily',
-
-    packages=find_packages(),
-
+    packages=find_packages(exclude=('tests',)),
     install_requires=['PyLTI==0.5.1'],
     include_package_data=True,
+
+    classifiers=[
+        'Development Status :: 3 - Alpha',
+        'Intended Audience :: Developers',
+        'Topic :: Software Development :: Libraries :: Python Modules',
+        'License :: OSI Approved :: MIT License',
+        'Framework :: Django :: 2.0.3',
+        'Framework :: Django :: 2.1',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+    ],
 )
