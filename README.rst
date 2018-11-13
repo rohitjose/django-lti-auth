@@ -111,9 +111,9 @@ Installation
 
 To install the package run the following command:
 
-    .. code-block:: python
+.. code-block:: python
 
-     pip install django_lti_auth
+ pip install django_lti_auth
 
 
 Requirements
